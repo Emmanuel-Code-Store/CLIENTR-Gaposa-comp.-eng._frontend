@@ -17,7 +17,7 @@ export async function GET() {
       );
     }
 
-    const cookieHeader = `access_token=${token.value}`;
+    // const cookieHeader = `access_token=${token.value}`;
 
     const res = await fetch(`${API_BASE}/auth/me`, {
       method: "GET",
