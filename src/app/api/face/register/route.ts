@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 
 const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || "";
 const API_KEY = process.env.API_KEY || "";
