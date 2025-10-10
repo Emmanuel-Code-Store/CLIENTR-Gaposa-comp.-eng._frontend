@@ -13,10 +13,10 @@ export interface ModulePermission {
 // 🔹 Server-side: get logged in user (basic)
 export async function getServerUser() {
   const cookieStore = await cookies();
-  const cookieHeader = cookieStore
-    .getAll()
-    .map((cookie) => `${cookie.name}=${cookie.value}`)
-    .join("; ");
+  // const cookieHeader = cookieStore
+  //   .getAll()
+  //   .map((cookie) => `${cookie.name}=${cookie.value}`)
+  //   .join("; ");
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/me`, {
     headers: {
