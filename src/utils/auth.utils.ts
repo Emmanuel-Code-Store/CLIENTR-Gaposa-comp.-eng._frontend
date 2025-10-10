@@ -12,7 +12,7 @@ export interface ModulePermission {
 
 // 🔹 Server-side: get logged in user (basic)
 export async function getServerUser() {
-  const cookieStore = await cookies();
+  // const cookieStore = await cookies();
   // const cookieHeader = cookieStore
   //   .getAll()
   //   .map((cookie) => `${cookie.name}=${cookie.value}`)
