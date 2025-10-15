@@ -2,9 +2,9 @@
 import React from "react";
 import {Box} from "@mui/material";
 
-import Navbar from "@/components/Navbar";
-import Home from "@/components/Home";
-import Footer from "@/components/Footer";
+import Navbar from "@computerEngineering/components/Navbar";
+import Home from "@computerEngineering/components/Home";
+import Footer from "@computerEngineering/components/Footer";
 
 const Page: React.FC = () => {
 

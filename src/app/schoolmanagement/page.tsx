@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Typography } from '@mui/material';
-import Navbar from '@/components/Navbar';
-import Footer from "@/components/Footer";
-import Card from "@/components/Card";
+import Navbar from '@computerEngineering/components/Navbar';
+import Footer from "@computerEngineering/components/Footer";
+import Card from "@computerEngineering/components/Card";
 
 const Event: React.FC = () => (
   <>

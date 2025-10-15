@@ -2,21 +2,33 @@
 
 import * as React from "react";
 import { Box, Typography, Button } from "@mui/material";
-import Image from "next/image";
+import Image from "next/image"; import { motion } from "framer-motion";
 
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const images = [
-  "/images/71a192f1193d3440fb7331a6170c899d.jpeg",
-  "/images/istockphoto-483322025-612x612.jpg",
-  "/images/abcd.png",
-  "/images/landingImg.jpeg",
-  "/images/Untitled.jpeg",
-  "/images/Pictures.png",
-  "/images/80fd2abc35ce83b00538f50db423ceed.png",
+  "/images/1.jpeg",
+  "/images/2.jpeg",
+  "/images/3.jpg",
+  "/images/4.jpg",
+  "/images/5.jpeg",
+  "/images/6.jpg",
+  "/images/7.jpeg",
+  "/images/8.jpeg",
+  "/images/9.jpg"
 ];
 
 export default function News() {
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+
+
+  const goNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const goPrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
 
   return (
     <Box sx={{
@@ -29,16 +41,16 @@ export default function News() {
 
       }}>
         <Box sx={{
-          width: '100%',
+          width:'100%',
           display: 'flex',
-          flexDirection: { xs: 'column', sm: 'column', md: 'row' },
+          flexDirection: {xs:'column', sm:'column', md:'row'},
           gap: 2,
-          justifyContent: 'space-between', alignItems: { xs: 'start', sm: 'start', md: 'center' },
+          justifyContent: 'space-between', alignItems: {xs:'start', sm:'start', md:'center'},
         }}>
           <Typography component="h2" sx={{ color: '#FF2600', borderLeft: '5px solid #FF2600', paddingLeft: '1rem', fontSize: { xs: '.9rem', sm: '1rem', md: '2rem' } }}>
-            Tender Steps News & Updates
+            Computer Engineering News & Updates
           </Typography>
-          <Button sx={{ background: '#659AC9', color: '#fff', width: { xs: '80%', sm: '50%', md: '20%' }, borderRadius: '30px', border: '1px solid #0C123A', display: 'flex', flexDirection: 'row', gap: '1rem', height: '3.75rem' }}>
+          <Button sx={{ background: '#659AC9', color: '#fff', width: {xs:'80%', sm:'50%', md:'20%'}, borderRadius: '30px', border: '1px solid #0C123A', display: 'flex', flexDirection: 'row', gap: '1rem', height: '3.75rem' }}>
             Learn More <ArrowForwardIcon />
           </Button>
         </Box>
@@ -46,49 +58,73 @@ export default function News() {
         <Box sx={{
           width: '90vw',
           height: '35rem',
-          position: 'relative',
+          display: 'flex',
+          gap: 4,
+          justifyContent: 'center',
+          alignItems: 'center', position: 'relative',
           overflow: 'hidden',
         }}>
 
-
-          <Box
+          <Button
+            onClick={goPrev}
             sx={{
-              display: 'flex',
-              gap: '2rem',
-              justifyContent: 'start',
-              alignItems: 'start',
-              overflowY: 'none',
-              overflowX: 'scroll',
+              zIndex: '20000',
+              position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)',
+              backgroundColor: '#659AC9', color: '#fff', borderRadius: '50%', padding: '1rem',
+              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
             }}
           >
+            Prev
+          </Button>
+
+          <motion.div
+            style={{ display: 'flex', transition: 'transform 0.5s ease' }}
+            animate={{ x: -currentIndex * 100 }}
+          >
             {images.map((image, index) => (
-              <Box key={index}>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -300 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 300 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              >
                 <Box
                   sx={{
-                    width: '35rem',
-                    minHeight: { md: '35rem' },
+                    width: { xs: '15rem', sm: '25rem', md: '35rem' },
+                    minHeight: { xs: '15rem', sm: '25rem', md: '35rem' },
                     marginRight: '1rem',
                   }}
                 >
+
                   <Image
                     src={image}
                     alt="carousel image"
+                    layout="responsive"
                     width={100}
                     height={100}
-                    layout="responsive"
-                    style={{ width: "35rem", minHeight: "35rem", objectFit: "cover" }}
-                    priority
+                    style={{ width: '35rem', minHeight: '35rem', objectFit: "cover" }}
                   />
                 </Box>
                 <Box sx={{ width: '80%', margin: 'auto', position: 'relative', marginTop: '-80px', padding: '2rem', height: '8rem', bgcolor: '#fff' }}>
-                  <Typography component="p">Children’s Day Extravaganza at Tender Steps Schools</Typography>
+                  <Typography component="p">Children’s Day Extravaganza at Computer ENgineering</Typography>
                 </Box>
-              </Box>
+              </motion.div>
             ))}
-          </Box>
+          </motion.div>
 
 
-
+          <Button
+            onClick={goNext}
+            sx={{
+              zIndex: '20000',
+              position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)',
+              backgroundColor: '#659AC9', color: '#fff', borderRadius: '50%', padding: '1rem',
+              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.3)',
+            }}
+          >
+            Next
+          </Button>
         </Box>
       </Box>
     </Box>

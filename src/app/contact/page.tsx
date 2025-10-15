@@ -1,39 +1,21 @@
 'use client'
 
 import React, { useState } from 'react';
-import { TextField, Button, Box, Typography, Alert } from '@mui/material';
-import Navbar from '@/components/Navbar';
-import Footer from "@/components/Footer";
+import { TextField, Button, Box, Typography } from '@mui/material';
+import Navbar from '@computerEngineering/components/Navbar';
+import Footer from "@computerEngineering/components/Footer";
 import Image from 'next/image';
 
 const Contact: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
-  const [alertMessage, setAlertMessage] = useState('');
-  const [alertSeverity, setAlertSeverity] = useState<'error' | 'success' | 'info' | 'warning'>('error');
+
+  const handleMessageChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setMessage(e.target.value);
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (!username || !email || !phone || !message) {
-      setAlertMessage('Empty fields detected. Please fill in all fields.');
-      setAlertSeverity('error');
-      return;
-    }
-
-    setAlertMessage('Message sent successfully!');
-    setAlertSeverity('success');
-
-    setTimeout(() => {
-      alert(`Message from ${username}: ${message}`);
-      setUsername('');
-      setEmail('');
-      setPhone('');
-      setMessage('');
-      setAlertMessage('');
-    }, 2000);
+    alert(`Message: ${message}`);
   };
 
   return (
@@ -60,44 +42,35 @@ const Contact: React.FC = () => {
             <Box sx={{ width: { xs: '100%', sm: '100%', md: '50%' }, background: 'linear-gradient(270deg, #DAD3D3 0%, #FAFAFA 14%)', padding: '2rem', minHeight: '80vh',  borderRadius: '1.25rem 0 0 1.25rem', display:'flex', flexDirection:'column', justifyContent:'space-between', alignItems:'start' }}>
 
               <Box>
-                <Typography component="h2" sx={{ fontSize: { xs: '2rem', sm: '2rem', md: '3rem' }, lineHeight: '5rem', fontFamily: 'Raleway, sans-serif' }} data-aos="fade-left"
-      data-aos-duration="1500">Contact Us</Typography>
+                <Typography component="h2" sx={{ fontSize: { xs: '2rem', sm: '2rem', md: '3rem' }, lineHeight: '5rem' }}>Contact Us</Typography>
               </Box>
 
-              <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }} data-aos="fade-left"
-      data-aos-duration="1500">
+              <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
                 <Image src="/images/Group 2149.png" width={40} height={40} alt="Address" />
                 <Box>
-                  <Typography component="p" data-aos="fade-left"
-      data-aos-duration="1500" sx={{fontFamily: 'Raleway, sans-serif'}}>Address</Typography>
-                  <Typography component="p" data-aos="fade-left"
-      data-aos-duration="1500" sx={{fontFamily: 'Raleway, sans-serif'}}>14, Adegboyega Street, Alade, Ijoko, Ogun State, Nigeria</Typography>
+                  <Typography component="p">Address</Typography>
+                  <Typography component="p">Sapaade, Ode Remo, Ogun State, Nigeria</Typography>
                 </Box>
               </Box>
 
-              <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }} data-aos="fade-left"
-      data-aos-duration="1500">
+              <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
                 <Image src="/images/Group 21491.png" width={40} height={40} alt="Call Us" />
-                <Box data-aos="fade-left"
-      data-aos-duration="1500">
-                  <Typography component="p" sx={{fontFamily: 'Raleway, sans-serif'}}>Call Us</Typography>
-                  <Typography component="p" sx={{fontFamily: 'Raleway, sans-serif'}}>+234 906 6929 845, +234 802 8704 43</Typography>
+                <Box>
+                  <Typography component="p">Call Us</Typography>
+                  <Typography component="p">+234 906 6929 845, +234 802 8704 43</Typography>
                 </Box>
               </Box>
 
-              <Box data-aos="fade-left"
-      data-aos-duration="1500" sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
                 <Image src="/images/Group 21492.png" width={40} height={40} alt="Email" />
-                <Box data-aos="fade-left"
-      data-aos-duration="1500">
-                  <Typography component="p" sx={{fontFamily: 'Raleway, sans-serif'}}>Email</Typography>
-                  <Typography component="p" sx={{fontFamily: 'Raleway, sans-serif'}}>info@tenderstepsschools.com.ng</Typography>
+                <Box>
+                  <Typography component="p">Email</Typography>
+                  <Typography component="p">info@computerengineering.gapoa.edu.ng</Typography>
                 </Box>
               </Box>
 
-              <Box data-aos="fade-left"
-      data-aos-duration="1500">
-                <Typography component="p" sx={{ lineHeight: '5rem', fontFamily: 'Raleway, sans-serif' }}>Follow Us</Typography>
+              <Box>
+                <Typography component="p" sx={{ lineHeight: '5rem' }}>Follow Us</Typography>
                 <Box sx={{ display: 'flex', gap: 2 }}>
                   <Image src="/images/logos_facebook.png" width={40} height={40} alt="Facebook" />
                   <Image src="/images/logos_facebook.png" width={40} height={40} alt="Facebook" />
@@ -109,10 +82,7 @@ const Contact: React.FC = () => {
 
             </Box>
 
-            <Box data-aos="fade-left"
-      data-aos-duration="1700" sx={{ width: { xs: '90%', sm: '80%', md: '50%' }, padding: { xs: '0', sm: '0', md: '2rem' }, paddingBottom: { xs: '1rem', sm: '1rem', md: '0' } }}>
-            {alertMessage && <Alert severity={alertSeverity}>{alertMessage}</Alert>}
-
+            <Box sx={{ width: { xs: '90%', sm: '80%', md: '50%' }, padding: { xs: '0', sm: '0', md: '2rem' }, paddingBottom: { xs: '1rem', sm: '1rem', md: '0' } }}>
               <form onSubmit={handleSubmit}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: '3rem', alignItems:'start', justifyContent:'space-between' }}>
                   <TextField
@@ -120,24 +90,18 @@ const Contact: React.FC = () => {
                     variant="outlined"
                     fullWidth
                     margin="normal"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
                   />
                   <TextField
                     label="Email"
                     variant="outlined"
                     fullWidth
                     margin="normal"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <TextField
                     label="Phone"
                     variant="outlined"
                     fullWidth
                     margin="normal"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
                   />
                   <TextField
                     label="Your Message"
@@ -146,7 +110,7 @@ const Contact: React.FC = () => {
                     multiline
                     rows={4}
                     value={message}
-                    onChange={(e) => setMessage(e.target.value)}
+                    onChange={handleMessageChange}
                     margin="normal"
                   />
                   <Button
@@ -154,7 +118,7 @@ const Contact: React.FC = () => {
                     variant="contained"
                     color="primary"
                     fullWidth
-                    sx={{height:'3.75rem', fontFamily: 'Raleway, sans-serif'}}
+                    sx={{height:'3.75rem'}}
                   >
                     Submit
                   </Button>
@@ -171,8 +135,7 @@ const Contact: React.FC = () => {
         height: '100vh',
         background: '#FFF5F5',
         position: 'relative', 
-      }} data-aos="fade-up"
-      data-aos-duration="1700">
+      }}>
         <iframe
           src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France"
           style={{
