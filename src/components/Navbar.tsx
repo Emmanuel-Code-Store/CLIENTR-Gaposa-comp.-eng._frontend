@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
             />
             <Box>
               <p>Email</p>
-              <p>info@computerengineering.gaposa.edu.ng</p>
+              <p>info@computerengineeringgaposa.org</p>
             </Box>
           </Box>
           <Box sx={{ padding: '1rem 0', display: 'flex', gap: '1rem', flexGrow: 1, justifyContent: 'start', alignItems: 'center', borderLeft: { sm: 'none', md: '1px solid #B8C6E4', }, minWidth: { xs: '100%', md: 'auto' }, paddingLeft: { xs: '0rem', md: '1rem' } }}>
