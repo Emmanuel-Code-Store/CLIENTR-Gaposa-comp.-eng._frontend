@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
             />
             <Box>
               <p>Call Us</p>
-              <p>+234 906 6929 845, +234 802 8704 43</p>
+              <p>+234 802 344 2012</p>
             </Box>
           </Box>
           <Box sx={{
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
             />
             <Box>
               <p>Location</p>
-              <p>14, Adegboyega, Ijoko, Ogun State, Nigeria</p>
+              <p>KM 55 lagos/ibadan expressway saapade remo Ogun state, Nigeria</p>
             </Box>
           </Box>
         </Box>
